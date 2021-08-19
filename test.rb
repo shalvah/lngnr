@@ -23,13 +23,13 @@ class LngnrTest < Minitest::Test
 
   def test_can_resolve_url_wihout_protocol
     get "/#{SHORT_URL_DOMAIN}/testing"
-    assert_equal 302, last_response.status
+    assert_equal 301, last_response.status
     assert_equal LONG_URL, last_response.header['Location']
   end
 
   def test_can_resolve_url_with_protocol
     get "/http://#{SHORT_URL_DOMAIN}/testing"
-    assert_equal 302, last_response.status
+    assert_equal 301, last_response.status
     assert_equal LONG_URL, last_response.header['Location']
   end
 
