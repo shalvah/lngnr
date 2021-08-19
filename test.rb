@@ -18,7 +18,7 @@ class LngnrTest < Minitest::Test
 
   def test_home
     get '/'
-    assert_equal "Welcome to Lngnr👋", last_response.body
+    assert_equal 200, last_response.status
   end
 
   def test_can_resolve_url_wihout_protocol

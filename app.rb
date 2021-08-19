@@ -5,7 +5,7 @@ require 'json'
 
 
 get '/' do
-  "Welcome to Lngnr👋"
+  "Welcome to Lngnr👋! Append a shortened URL to this page's URL, and we'll resolve the URL and take you to the original page."
 end
 
 UPSTREAM_CONNECT_TIMEOUT = 4
