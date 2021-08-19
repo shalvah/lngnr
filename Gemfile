@@ -18,3 +18,5 @@ group :test do
 end
 
 gem "win32console", "~> 1.3", :group => :windows
+
+gem "rake", "~> 13.0"
