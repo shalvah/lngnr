@@ -8,7 +8,8 @@ get '/' do
   "Welcome to Lngnr👋"
 end
 
-UPSTREAM_TIMEOUT = 10
+UPSTREAM_CONNECT_TIMEOUT = 4
+UPSTREAM_READ_TIMEOUT = 10
 MAX_REDIRECTS = 10
 
 get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
@@ -16,10 +17,11 @@ get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
 
   short_url = "#{protocol || 'http'}://#{short_url}"
   begin
-    session = Patron::Session.new({ timeout: UPSTREAM_TIMEOUT, max_redirects: MAX_REDIRECTS })
+    session = Patron::Session.new({ connect_timeout: UPSTREAM_CONNECT_TIMEOUT, timeout: UPSTREAM_READ_TIMEOUT, max_redirects: MAX_REDIRECTS })
+    # session.enable_debug 'patron.log'
     response = session.head(short_url)
   rescue Patron::TimeoutError
-    return [504, "Request to #{short_url} timed out after #{UPSTREAM_TIMEOUT} seconds. 😢"]
+    return [504, "Request to #{short_url} timed out. 😢"]
   rescue Patron::TooManyRedirects
     return [400, "Encountered more than #{MAX_REDIRECTS} redirects!"]
   end

@@ -6,15 +6,19 @@ on:
 
 jobs:
   test:
+    name: Run Tests (Ruby 2.7)
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - name: Install libcurl
+        run: |
+          sudo apt-get install libcurl4-openssl-dev
       - name: Set up Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 2.7
       - name: Install dependencies
-        run: bundle install
+        run: bundle install --without windows
       - name: Run tests
         run: bundle exec ruby test.rb
