@@ -8,6 +8,7 @@ Lngnr runs at [l.shalvah.me](http://l.shalvah.me) in production, and localhost:4
 ## Development
 Requires Ruby 2.7+ and Bundler
 
-- Install dependencies: `bundle install`
+- Install dependencies (Windows): `bundle install`
+- Install dependencies (other OSes): `bundle install --without windows`
 - Start app: `ruby ./app.rb`. This will start the app on localhost:4567 with hot reloading.
 - Run tests: `rake test`
