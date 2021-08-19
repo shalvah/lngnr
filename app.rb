@@ -5,7 +5,7 @@ require 'json'
 
 
 get '/' do
-  "Welcome to Longener👋"
+  "Welcome to Lngnr👋"
 end
 
 UPSTREAM_TIMEOUT = 10

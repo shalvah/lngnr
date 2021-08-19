@@ -9,7 +9,7 @@ sleep 1
 SHORT_URL_DOMAIN = "localhost:9494"
 LONG_URL = "http://localhost:9494/longlonglonglong"
 
-class LongenerTest < Minitest::Test
+class LngnrTest < Minitest::Test
   include Rack::Test::Methods
 
   def app
@@ -18,7 +18,7 @@ class LongenerTest < Minitest::Test
 
   def test_home
     get '/'
-    assert_equal "Welcome to Longener👋", last_response.body
+    assert_equal "Welcome to Lngnr👋", last_response.body
   end
 
   def test_can_resolve_url_wihout_protocol
@@ -39,5 +39,5 @@ class LongenerTest < Minitest::Test
   end
 end
 
-LongenerTest.run(Minitest::Reporters::SpecReporter.new)
+LngnrTest.run(Minitest::Reporters::SpecReporter.new)
 Process.kill("SIGKILL", pid)
