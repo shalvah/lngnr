@@ -26,7 +26,7 @@ get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
     return [400, "Encountered more than #{MAX_REDIRECTS} redirects!"]
   end
 
-  redirect(response.url)
+  redirect(response.url, 301)
 end
 
 set :show_exceptions, false
