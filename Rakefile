@@ -1,5 +1,6 @@
-task default: "test"
 
-task :test do
-  ruby "test.rb"
+begin
+  require 'rspec/core/rake_task'
+  RSpec::Core::RakeTask.new(:spec)
+rescue LoadError
 end

@@ -15,6 +15,7 @@ group :test do
   gem "rack-test", "~> 1.1"
   gem "minitest", "~> 5.14"
   gem "minitest-reporters", "~> 1.4"
+  gem "rspec", "~> 3.10"
 end
 
 gem "win32console", "~> 1.3", :group => :windows

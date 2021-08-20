@@ -20,4 +20,4 @@ jobs:
       - name: Install dependencies
         run: bundle install --without windows
       - name: Run tests
-        run: rake test
+        run: rake spec
