@@ -11,4 +11,4 @@ Requires Ruby 2.7+ and Bundler
 - Install dependencies (Windows): `bundle install`
 - Install dependencies (other OSes): `bundle install --without windows`
 - Start app: `ruby ./app.rb`. This will start the app on localhost:4567 with hot reloading.
-- Run tests: `rake test`
+- Run tests: `rake spec` (Tests are written in RSpec, in the spec/ folder)
