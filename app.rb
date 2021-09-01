@@ -5,7 +5,7 @@ require 'json'
 
 
 get '/' do
-  "Welcome to Lngnr👋! Append a shortened URL to this page's URL, and we'll resolve the URL and take you to the original page."
+  erb :index
 end
 
 UPSTREAM_CONNECT_TIMEOUT = 4
@@ -14,6 +14,7 @@ MAX_REDIRECTS = 10
 
 get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
   pass if request.path_info == "/__sinatra__/500.png"
+  not_found if request.path_info == "/favicon.ico"
 
   short_url = "#{protocol || 'http'}://#{short_url}"
   begin
