@@ -17,7 +17,12 @@ get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
 
   short_url = "#{protocol || 'http'}://#{short_url}"
   begin
-    session = Patron::Session.new({ connect_timeout: UPSTREAM_CONNECT_TIMEOUT, timeout: UPSTREAM_READ_TIMEOUT, max_redirects: MAX_REDIRECTS })
+    session = Patron::Session.new({
+      connect_timeout: UPSTREAM_CONNECT_TIMEOUT,
+      timeout: UPSTREAM_READ_TIMEOUT,
+      max_redirects: MAX_REDIRECTS,
+      insecure: true,
+    })
     # session.enable_debug 'patron.log'
     response = session.head(short_url)
   rescue Patron::TimeoutError
