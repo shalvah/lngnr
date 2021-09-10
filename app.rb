@@ -17,6 +17,7 @@ get /\/((https?):\/\/?)?(.+)/ do |_, protocol, short_url|
   not_found if request.path_info == "/favicon.ico"
 
   short_url = "#{protocol || 'http'}://#{short_url}"
+  short_url += "?#{request.query_string}" if request.query_string
   begin
     session = Patron::Session.new({
       connect_timeout: UPSTREAM_CONNECT_TIMEOUT,
