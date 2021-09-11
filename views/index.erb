@@ -3,23 +3,31 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
-<div>
-Welcome to Lngnr👋! Append a shortened URL to this page's URL, and we'll resolve the URL and take you to the original page.
-</div>
+<style>
+    body {
+        font-family: Verdana Helvetica, sans-serif;
+    }
+</style>
+<p>
+  Welcome to Lngnr👋! Append a shortened URL to this page's URL, and we'll resolve the URL and take you to the original
+  page.
+</p>
 
-<div>
-Alternatively, you can paste your shortened URL into this form:
-</div>
+<p>
+  Alternatively, you can paste your shortened URL into this form:
+</p>
 
 <form onsubmit="event.preventDefault(); navigate();">
   <input type="text" autocomplete="off">
+
+  <button type="submit">Go</button>
 </form>
 
 <script>
-  function navigate() {
-      const location = document.querySelector("input").value;
-      window.location = window.location.href.replace(/\/$/, '') + '/' + location;
-  }
+    function navigate() {
+        const location = document.querySelector("input").value;
+        window.location = window.location.href.replace(/\/$/, '') + '/' + location;
+    }
 </script>
 
 </html>
